@@ -1,0 +1,22 @@
+# Node backend
+PasswordHolderBackend/node_modules/
+PasswordHolderBackend/.env
+PasswordHolderBackend/npm-debug.log*
+
+# Flutter app
+PasswordHolderFLutter/flutter_holder/.dart_tool/
+PasswordHolderFLutter/flutter_holder/.idea/
+PasswordHolderFLutter/flutter_holder/.packages
+PasswordHolderFLutter/flutter_holder/build/
+PasswordHolderFLutter/flutter_holder/ios/Flutter/Flutter.framework
+PasswordHolderFLutter/flutter_holder/ios/Flutter/Flutter.podspec
+PasswordHolderFLutter/flutter_holder/linux/flutter/ephemeral/
+PasswordHolderFLutter/flutter_holder/macos/Flutter/ephemeral/
+PasswordHolderFLutter/flutter_holder/windows/flutter/ephemeral/
+
+# Misc / OS files
+.DS_Store
+Thumbs.db
+*.iml
+*.log
+

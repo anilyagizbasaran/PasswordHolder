@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BarPass</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main id="app" class="container">
+      <section id="login-section" class="card">
+        <h1>BarPass</h1>
+        <p class="muted"> 
+          Kullanıcı hesabınızla giriş yapın.
+        </p>
+        <form id="login-form">
+          <label class="field">
+            <span>E-posta</span>
+            <input
+              name="email"
+              type="email"
+              placeholder="ornek"
+              required
+            />
+          </label>
+          <label class="field">
+            <span>Şifre</span>
+            <input
+              name="password"
+              type="password"
+              placeholder="•••••••"
+              required
+            />
+          </label>
+          <button type="submit" class="primary">Giriş yap</button>
+          <p id="login-error" class="error" hidden></p>
+        </form>
+      </section>
+
+      <section id="app-section" class="card" hidden>
+        <header class="card-header">
+          <div>
+            <h2 id="user-name"></h2>
+            <p class="muted" id="user-email"></p>
+          </div>
+          <div class="actions">
+            <button
+              id="entry-toggle-btn"
+              type="button"
+              class="ghost action-fab"
+              aria-label="Yeni kayıt formunu aç"
+              aria-controls="entry-form-panel"
+              aria-expanded="false"
+            >
+              +
+            </button>
+            <button
+              id="refresh-btn"
+              type="button"
+              class="ghost action-icon"
+              aria-label="Kayıtları yenile"
+            >
+              ⟳
+            </button>
+            <button id="logout-btn" class="ghost danger">Çıkış</button>
+          </div>
+        </header>
+        <section>
+          <details id="entry-form-panel">
+            <summary
+              id="entry-form-summary"
+              class="visually-hidden"
+              aria-label="Yeni kayıt formu"
+            >
+              Form paneli
+            </summary>
+            <form id="entry-form">
+              <input type="hidden" name="entryId" id="entry-id" />
+              <label class="field">
+                <span>Ad</span>
+                <input name="name" type="text" required />
+              </label>
+              <label class="field">
+                <span>Kullanıcı adı / E-posta</span>
+                <input name="email" type="text" required />
+              </label>
+              <label class="field">
+                <span>Şifre</span>
+                <input name="password" type="text" required />
+              </label>
+              <label class="field">
+                <span>Giriş bağlantısı (opsiyonel)</span>
+                <input
+                  name="loginUrl"
+                  type="url"
+                  placeholder="https://example.com/login"
+                  inputmode="url"
+                />
+              </label>
+              <div class="form-row">
+                <button type="submit" class="primary" id="entry-submit-btn">
+                  Kaydet
+                </button>
+                <button type="button" class="ghost" id="entry-cancel-btn">
+                  Temizle
+                </button>
+              </div>
+              <p id="entry-error" class="error" hidden></p>
+            </form>
+          </details>
+        </section>
+
+        <section>
+          <h3>Şifre kayıtları</h3>
+          <div id="entries-container" class="entries"></div>
+          <p id="entries-empty" class="muted" hidden>
+            Henüz kayıt bulunmuyor.
+          </p>
+          <p id="entries-error" class="error" hidden></p>
+        </section>
+      </section>
+    </main>
+
+    <template id="entry-template">
+      <article class="entry-card collapsed">
+        <div class="entry-header-wrapper">
+          <button
+            class="entry-drag-handle"
+            type="button"
+            aria-label="Sıralamak için sürükle"
+            title="Sıralamak için sürükle"
+            draggable="true"
+          >
+            ☰
+          </button>
+          <button class="entry-header" type="button">
+            <h4 class="entry-title"></h4>
+            <span class="entry-chevron" aria-hidden="true">⌄</span>
+          </button>
+          <div class="entry-menu-wrapper">
+            <button
+              class="entry-menu-btn"
+              type="button"
+              aria-haspopup="true"
+              aria-expanded="false"
+              aria-label="Kayıt menüsü"
+            >
+              ⋮
+            </button>
+            <div class="entry-menu" role="menu">
+              <button
+                type="button"
+                class="entry-menu-item entry-edit-btn"
+                role="menuitem"
+              >
+                Düzenle
+              </button>
+              <button
+                type="button"
+                class="entry-menu-item entry-delete-btn"
+                role="menuitem"
+              >
+                Sil
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="entry-body">
+          <div class="entry-field entry-email">
+            <span class="entry-field-label">Kullanıcı:</span>
+            <span class="entry-field-value"></span>
+          </div>
+          <div class="entry-field entry-password">
+            <span class="entry-field-label">Şifre:</span>
+            <span class="entry-field-value"></span>
+          </div>
+          <div class="entry-field entry-login">
+            <span class="entry-field-label">Bağlantı:</span>
+            <button
+              type="button"
+              class="link-chip entry-login-btn"
+              title="Bağlantıyı yeni sekmede aç"
+            >
+              —
+            </button>
+          </div>
+        </div>
+      </article>
+    </template>
+
+    <script src="popup.js" type="module"></script>
+  </body>
+</html>
+

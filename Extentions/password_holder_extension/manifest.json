@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "BarPass Kullanıcı",
+  "version": "0.1.0",
+  "description": "BarPass backendindeki kullanıcı işlemlerini tarayıcı uzantısı üzerinden gerçekleştir.",
+  "action": {
+    "default_title": "BarPass",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "storage",
+    "tabs"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "contentScript.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "host_permissions": [
+    "http://localhost:3000/*"
+  ],
+  "icons": {
+    "128": "icon-128.png"
+  }
+}
+
